@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <% if (userId){%>
+        <div class="token"><%=token%></div>
+        <div class="users">
+            <h3>Users logged in as this token</h3>
+            <ul>
+                <% users.forEach(user => { %>
+                    <li>
+                        <pre>
+                            <%=JSON.stringify(user, null, 2)%>
+                        </pre>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        <div class="tokens">
+            <h3>Tokens of this user</h3>
+            <ul>
+                <% tokens.forEach(token => { %>
+                    <li>
+                        <pre>
+                            <%=JSON.stringify(token, null, 2)%>
+                        </pre>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    <%} else {%> 
+        <%- include('login', {msg}); %>
+    <%} %>
+</body>
+</html>

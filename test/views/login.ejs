@@ -1,0 +1,20 @@
+<div class="login">
+  <h3>Login</h3>
+  <form method="POST" action="">
+    <% if (msg){ %>
+    <p class="txt"><%=msg%></p>
+    <%} else {%>
+    <p class="txt">
+      This page is just for test purpose. No real username or password is used
+      here. This is statically typed username and password. Just to showcase how
+      you might use this library in your project.
+      <b>Username: admin, Password: admin</b>
+    </p>
+    <% } %>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" />
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" />
+    <input type="submit" value="Login" />
+  </form>
+</div>

@@ -1,0 +1,101 @@
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background: #eee;
+}
+
+.login{
+    min-width: 700px;
+    min-height: 400px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.login h3{
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+}
+form{
+    padding: 10px;
+}
+.txt{
+    padding: 5px;
+    margin: 0;
+    border: 1px solid #ddd;
+    background: #eee;
+    word-break: break-word;
+    white-space: pre;
+}
+
+label, input{
+    display: block;
+    margin-top: 5px;
+}
+input{
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+input:focus, input:hover{
+    outline: none;
+    box-shadow: 0 0 5px blue;
+}
+
+input[type="submit"]{
+    cursor: pointer;
+}
+
+.token{
+    background: #fff;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #b6b6b6;
+    margin: 10px;
+}
+
+.users, .tokens{
+    background: #fff;
+    margin: 10px;
+    height: calc(50vh - 60px);
+    overflow: auto;
+    border-radius: 10px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.users h3, .tokens h3{
+    position: sticky;
+    top: 0;
+    background: #fff;
+    margin: 0;
+    padding: 10px;
+    box-shadow: 0 -3px 0 3px white, 0 0 3px #aaa;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style-type: none;
+    border-bottom: 1px solid #eee;
+}
+
+li:last-child{
+    border: none;
+}

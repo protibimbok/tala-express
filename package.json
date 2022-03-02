@@ -1,0 +1,40 @@
+{
+  "name": "tala-express",
+  "version": "1.0.1",
+  "description": "A lightweight authorization package for express app",
+  "type": "module",
+  "main": "main.js",
+  "exports": {
+    ".": "./mysql2/main.js",
+    "./mongo": "./mongo/main.js"
+  },
+  "scripts": {
+    "test": "nodemon ./test/index.js"
+  },
+  "repository": "http://github.com/protibimbok/tala-express",
+  "keywords": [
+    "express",
+    "authorization",
+    "tala",
+    "tala-express"
+  ],
+  "readmeFilename": "README.md",
+  "author": {
+    "name": "Sakibur Rahman Khan (Saad)",
+    "email": "sakib.saad.khan@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3",
+    "geoip-lite": "^1.4.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "mongoose": "^6.2.4",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15"
+  }
+}
