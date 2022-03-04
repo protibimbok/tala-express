@@ -130,18 +130,29 @@ multiple accounts from a single device.
   });
 
   const app = express();
-
-  app.use(
-    ensureUser(
-      (req, res)=>{
-        /**
-        * This will get called if user is not authorized
-        */
-        res.send('Unauthorized request');
-      },
-      '/login' /* Paths to skip this check. array, string or regex */
-    )
+  
+  const authChecker = ensureUser(
+    (req, res)=>{
+      /**
+      * This will get called if user is not authorized
+      */
+      res.status(401).send('Unauthorized request!');
+    },
+    '/login' /* Paths to be skipped from this check. array, string or regex */
   );
+
+  const authCheckerApi = ensureUser(
+    (req, res)=>{
+      res.status(401).send({
+        success: false,
+        error: 'Unauthorized request!'
+      });
+    },
+    ['/api/login', '/api/register', /^\/api\/guest\//]
+  );
+
+  app.use(/^(?!\/api\/)/, authChecker);
+  app.use(/^(\/api\/)/, authCheckerApi);
 
   app.post('/login', (req, res)=>{
       if(req.userId){
@@ -151,10 +162,10 @@ multiple accounts from a single device.
       }
       //DO your password check
       const token = genToken(req, user_id);
-      //Either you can set this as cookie or in request header
+      //Either you can set this as cookie or send with request header
   });
 
-  app.lister(3000, ()=>{
+  app.listen(3000, ()=>{
       console.log('Server started at port 3000');
   });
 
