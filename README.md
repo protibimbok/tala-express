@@ -115,7 +115,7 @@ multiple accounts from a single device.
 ## Usage
 
 ```javascript
-  import {createConnection} from 'mysql2/promise';
+  import { createPool } from 'mysql2/promise';
   import { setTala, genToken, ensureUser, attachUser } from 'tala-express';
   import express from 'express';
 
