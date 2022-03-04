@@ -53,6 +53,11 @@ export const getOfToken = async (token, page) => {
 
 
 export const ensureUser = (callback, ignores) => async (req, res, next) => {
+    if(req.talaChecked){
+        next();
+        return;
+    }
+    req.talaChecked = true;
     const [uid, token] = getToken(req).split('|');
     if(!token || !uid){
         if(shouldIgnore(ignores, req._parsedUrl.pathname)){
