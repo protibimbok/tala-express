@@ -1,6 +1,6 @@
 {
   "name": "tala-express",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lightweight authorization package for express app",
   "type": "module",
   "main": "main.js",
