@@ -116,7 +116,7 @@ multiple accounts from a single device.
 
 ```javascript
   import { createPool } from 'mysql2/promise';
-  import { setTala, genToken, ensureUser, attachUser } from 'tala-express';
+  import { setTala, genToken, ensureUser } from 'tala-express';
   import express from 'express';
 
   const dbConn = createPool({
@@ -151,7 +151,14 @@ multiple accounts from a single device.
     ['/api/login', '/api/register', /^\/api\/guest\//]
   );
 
+  /**
+   * For all routes except those that starts with /api/
+   */
   app.use(/^(?!\/api\/)/, authChecker);
+
+  /**
+   * For all routes that starts with /api/
+   */
   app.use(/^(\/api\/)/, authCheckerApi);
 
   app.post('/login', (req, res)=>{
@@ -187,8 +194,11 @@ multiple accounts from a single device.
     /**
     * Provide table name for mysql2 or model for mongoose to
     * add a user property containing user info in req object
+    * const User = mongoose.model('User', {
+    *   //Some declarations
+    * })
     */
-    userModel: false,
+    userModel: false, //mysql2 => 'users', mongoose => User
 
     /**
     * coloumn names or fields you want to get from users table
@@ -197,14 +207,10 @@ multiple accounts from a single device.
     * And in case of mongoose provide space separated names as: "name age another_field"
     */
     populate: false,
-    
-    /**
-    * coloumn names or fields you want to get from users table
-    * In case of mysql2 provide array of fields
-    * or a direct string as: "full_name as name, COUNT(id) AS any_count"
-    * And in case of mongoose provide space separated names as: "name age another_field"
-    */
 
     foreignKey: 'id', //id column name in the userModel table
   });
 ```
+
+
+> Neither of `mysql2` or `mongoose` is added in the dependency list, because you won't need both of them. And the necessary one should be already present. 
